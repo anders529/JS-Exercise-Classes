@@ -85,13 +85,18 @@ fill(gallons) {
   return this.tank += gallons;
 };
 drive(distance){
-  this.odometer +=distance;
-  this.tank -= (distance/this.milesPerGallon);
-  if (this.tank <= 0) {
-    return `I ran out of fuel at ${this.odometer-1} miles!`;
+    if ((this.tank*this.milesPerGallon) < (distance)){
+         this.odometer = (this.tank*this.milesPerGallon)
+      let empty = this.tank
+         this.tank = 0
+      return `I ran out of fuel at ${empty*this.milesPerGallon} miles!`
+    } else {
+        this.odometer = distance;
+        this.tank = this.tank - (distance/this.milesPerGallon);
     }
-}
-}
+  }
+
+};
 
 /*
   TASK 3
